@@ -6,7 +6,8 @@
 
 ## Usage
 
-
+npm install if there is a change to package.json
+npm start
 
 ## Developing
 
