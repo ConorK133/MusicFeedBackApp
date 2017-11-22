@@ -12,6 +12,7 @@ module.exports = function(app) {
     });
     app.get('/playmusic', function(req, res){
         // In the future call a function from PlayMusic that returns this information.
-        res.sendFile('test.mp3', options = { root: 'C:/Projects/MusicFeedBackApp/src/music/'});
+        var musicFolder = path.resolve('src/music/');
+        res.sendFile('test.mp3', options = { root: musicFolder});
     });
 }
