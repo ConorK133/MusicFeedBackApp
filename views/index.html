@@ -1,1 +1,34 @@
-hello lad	
+<!doctype html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<title>Upload</title>
+</head>
+
+<body>
+
+	<script src="/src/UploadSong.js"></script>
+	<form id="my_form" action="/createDoc" method="post">	
+		<input type='file' name='upload' accept='audio/*'>	
+		<div>     
+            <input name="artist" type="text" placeholder="Artist" required>
+        </div>
+		<div>     
+            <input name="title" type="text" placeholder="Title" required>
+        </div>
+        <div>     
+            <input name="genre" type="text" placeholder="Genre" required>
+        </div>
+        <div>     
+            <input name="desc" type="text" placeholder="Description" required>
+        </div>
+
+		<br>
+		
+			<div href="javascript:{}" id="notedit" onclick="submitSong()" class="btn">Upload Song</div>
+		
+		<br>
+	</form>
+</body>
+</html>
