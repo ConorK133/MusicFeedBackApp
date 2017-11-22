@@ -8,4 +8,4 @@ app.use(express.static(__dirname + '/'));
 // routes 
 require('./app/routes.js')(app); 
 app.listen(6001)
-console.log('The Application is launched on ');
+console.log('The Application is launched on 6001');

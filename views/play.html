@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Play</title>
+        <script type="text/javascript">
+            var context = new AudioContext();
+            var audioSound;
+            var xmlhttp = new XMLHttpRequest();
+            function start(){
+                
+                xmlhttp.open("GET", '/playmusic', true);
+                xmlhttp.responseType = "arraybuffer";
+                xmlhttp.onload = function(){
+                    context.decodeAudioData(xmlhttp.response, function(buffer){
+                        audioSound = buffer;
+                        playSound();
+                    });
+                }
+                xmlhttp.send(); 
+            }
+            function playSound(){
+                var playSound = context.createBufferSource();
+                playSound.buffer = audioSound;
+                playSound.connect(context.destination);
+                playSound.start(0);
+            }
+            // Wait for page to load then grab start button and check it exists.
+            window.onload = function(){ 
+                var startElement = document.getElementById("btnStart");
+                
+                if(startElement){
+                    startElement.addEventListener("click", start);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id="btnStart">Start</button>
+        <div class="btn" id="play-button">Play</div>
+        <audio id="audio-element"></audio>
+    </body>
+</html>
