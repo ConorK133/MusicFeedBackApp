@@ -7,9 +7,9 @@
             var context = new AudioContext();
             var audioSound;
             var xmlhttp = new XMLHttpRequest();
+            var audioId;
             function start(){
-                
-                xmlhttp.open("GET", '/playmusic', true);
+                xmlhttp.open("GET", '/playmusic?' + audioId, true);
                 xmlhttp.responseType = "arraybuffer";
                 xmlhttp.onload = function(){
                     context.decodeAudioData(xmlhttp.response, function(buffer){
@@ -28,16 +28,19 @@
             // Wait for page to load then grab start button and check it exists.
             window.onload = function(){ 
                 var startElement = document.getElementById("btnStart");
+                var audioInput = document.getElementById("audioInput");
                 
                 if(startElement){
+                    audioInput.addEventListener("change", function(){
+                        audioId = audioInput.value;
+                    });
                     startElement.addEventListener("click", start);
                 }
             }
         </script>
     </head>
     <body>
-        <button id="btnStart">Start</button>
-        <div class="btn" id="play-button">Play</div>
-        <audio id="audio-element"></audio>
+        <input type="text" name="audio-input" id="audioInput" value="">
+        <button id="btnStart">Play</button>
     </body>
 </html>

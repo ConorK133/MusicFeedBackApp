@@ -1,29 +1,21 @@
 /*
  * Script is not used at all yet.
- *
- *
+ */
 
-// Import MPlayer and instaniate new player
-var NodePlayer = require('node-mplayer');
 var fs = require('fs');
-var myplayer = new NodePlayer();
+// TEMP - save list of local songs of an array/list
+var path = require('path');
+var musicFolder = path.resolve('src/music/');
+var songList = ['test.mp3', 'test2.mp3','test3.mp3', 'test4.mp3'];
 
-var song = 'C:/Projects/MusicFeedBackApp/src/music/test.mp3';
-//loadSong(song);
+// Return audio source based on id provided
+function playSong(req, res){
+	// TEMP - grab the value passed via the html input
+	var audioId = Object.keys(req.query)[0];
+	res.sendFile(songList[audioId], options = { root: musicFolder });
 
-// Song playback functions
-function loadSong(song){
-    myplayer.setFile(song);
-}
-function playSong(){
-    myplayer.play({volume: 50});
-    console.log("Playing");
-}
-function pauseSong(){
-    myplayer.pause();
+	// FUTURE
+	// Query database for song with matching ID and return via res.sendFile();
 }
 
-module.exports = {playSong, pauseSong}
-
-
-*/
+module.exports = {playSong}
