@@ -3,6 +3,10 @@
  */
 var songlist = [];
 
+try{
+	var socket = io();
+} catch(e){}
+
 function submitSong(elmID)
 {
 	var formData = new FormData();
@@ -12,14 +16,10 @@ function submitSong(elmID)
 	for (var i = 0; i < x.elements.length; i++) {
 		song[x.elements[i].name] = x.elements[i].value;
 	}
-
 	songlist.push(song);
-	//printSongList();
+	printSongList();
 }
 
 function printSongList(){
-	for(var i = 0; i < songlist.length; i++)
-	{
-		console.log(JSON.stringify(songlist[i]));
-	}
+	socket.emit('input', JSON.stringify(songlist[songlist.length-1]));
 }
