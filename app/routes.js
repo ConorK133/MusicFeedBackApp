@@ -10,7 +10,7 @@ module.exports = function(app) {
     app.get('/play', function(req, res){
         res.sendFile(path.resolve('views/play.html'));
     });
-    app.get('/playmusic', function(req, res){
+    /*app.get('/playmusic', function(req, res){
         playmusic.playSong(req, res);
-    });
+    });*/
 }
