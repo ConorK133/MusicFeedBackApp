@@ -15,7 +15,6 @@ io.on('connection', function(socket){
 	console.log('connected');
 	
 	socket.on('input', function(data){
-		console.log("33333333333333333")
 		console.log(data);
 	})
 	socket.on('disconnect', function(){})

@@ -16,8 +16,6 @@ function submitSong(elmID)
 	for (var i = 0; i < x.elements.length; i++) {
 		song[x.elements[i].name] = x.elements[i].value;
 	}
-
-	console.log("hhhhheerererer")
 	songlist.push(song);
 	printSongList();
 }
