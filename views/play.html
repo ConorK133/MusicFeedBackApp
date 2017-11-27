@@ -8,10 +8,13 @@
         <script src="/socket.io/socket.io.js"></script>
         <script src="/node_modules/socket.io-stream/socket.io-stream.js"></script>
         <script src="/src/playSong-cs.js"></script>
-        <audio id="audio" controls>
-        <source src="" type="audio/mp3">
-        </audio>
-        <p>Input number from 0-3 then press Play</p>
-        <input type="text" name="audio-input" id="audioInput" value="">
+        
+        <div id="song-object">
+            <audio id="audio" controls>
+                <source src="" type="audio/mp3">
+            </audio>
+            <p>Input number from 0-3 then press Play</p>
+            <input type="text" name="audio-input" id="audioInput" value="">
+        </div>
     </body>
 </html>
