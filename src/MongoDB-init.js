@@ -10,8 +10,7 @@ var song = { "title" : "My Test Song", "artist" : "Tester", "genre" : "Rock", "D
 
 exports = module.exports = function(io){
     io.on('connection', function(socket){
-        socket.on('database', function(data){
-            console.log("Made it this far");
+        socket.on('database', function(){
             MongoClient.connect(url, function(err, db){
                 if(err) throw err;
                 console.log("Database created");
@@ -25,7 +24,7 @@ exports = module.exports = function(io){
                     // Query collection
                     db.collection('songs').findOne({}, function(err, res){
                         if(err) throw err;
-                        console.log(res.title, res.audioId, res.genre);
+                        console.log("Song returned: " + res.title, res.audioId, res.genre);
                     });
                     db.close();
                 });
@@ -33,23 +32,3 @@ exports = module.exports = function(io){
         });
     });
 }
-/*exports = exports.module = function(test){
-    MongoClient.connect(url, function(err, db){
-        if(err) throw err;
-        console.log("Database created");
-        db.createCollection("songs", function(err, res){
-            if(err) throw err;
-            // Add to collection
-            db.collection('songs').insert(song, function(err, res){
-                if(err) throw err;
-                console.log("Song inserted");
-            });
-            // Query collection
-            db.collection('songs').findOne({}, function(err, res){
-                if(err) throw err;
-                console.log(res.title, res.audioId, res.genre);
-            });
-            db.close();
-        });
-    });
-}*/

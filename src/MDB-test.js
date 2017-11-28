@@ -5,7 +5,7 @@ try{
     console.log("Didn't connect");
 }
 function createDatabase(){
-    socket.emit('database', {my:"data"});
+    socket.emit('database');
 }
 
 window.onload = function(){
