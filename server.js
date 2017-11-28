@@ -13,6 +13,7 @@ require('./app/routes.js')(app);
 http.listen(6001);
 
 var playmusic = require('./src/PlayMusic.js')(io);
+var makedatabase = require('./src/MongoDB-init.js')(io);
 
 io.on('connection', function(socket){
     socket.on('input', function(data){
