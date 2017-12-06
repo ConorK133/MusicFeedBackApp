@@ -11,10 +11,12 @@ exports = module.exports = function(io){
     io.on('connection', function(socket){
         socket.on('database', function(song){
             MongoClient.connect(MONGO_URL, function(err, db){
+                console.log("Connection complete");
                 if(err){
                     console.log("ERROR: " + err);
                     throw err;
                 }
+                checkSongExists(song);
                 // Check if song exists in database by audioId.
                 function checkSongExists(song){
                     // Query for findOne must be an object.
