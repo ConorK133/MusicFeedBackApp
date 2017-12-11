@@ -1,7 +1,7 @@
 var audioId;
 try{
 	var socket = io();
-    console.log("It's connected");
+    console.log("It's connected for playback");
 } catch(e){
     console.log("It didn't try to connect: " + e);
 }

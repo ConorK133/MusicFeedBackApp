@@ -8,7 +8,7 @@
 	"dependencies": {
 		"express": "latest",
 		"fs": "latest",
-		"mongodb": "latest",
+		"mongodb": "^2.2.5",
 		"socket.io": "latest",
 		"socket.io-stream": "latest"
 	}

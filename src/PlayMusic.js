@@ -7,13 +7,8 @@ var path = require('path');
 var musicFolder = path.resolve('src/music/');
 var songList = ['/test.mp3', '/test2.mp3','/test3.mp3', '/test4.mp3'];
 
-var express  = require('express');
-var app      = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
 var fs = require('fs');
 var ss = require('socket.io-stream');
-
 
 exports = module.exports = function(io){
     io.on('connection', function(socket){

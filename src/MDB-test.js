@@ -1,8 +1,8 @@
 try{
     var socket = io();
-    console.log("Connected to local");
+    console.log("It's connected for database");
 } catch(e){
-    console.log("Didn't connect");
+    console.log("It didn't try to connect" + e);
 }
 function addSong(){
     var song3 = {"title" : "Test Song 4", "artist" : "Tester", "genre" : "Rock", "Desc" : "Test song for testing", "audioId" : "4" };
