@@ -3,6 +3,8 @@ var express  = require('express');
 var app      = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var fs = require('fs');
+var ss = require('socket.io-stream');
 
 app.use(express.static(__dirname + '/'));
 
@@ -10,14 +12,14 @@ app.use(express.static(__dirname + '/'));
 require('./app/routes.js')(app); 
 http.listen(6001);
 
+var playmusic = require('./src/PlayMusic.js')(io);
 
 io.on('connection', function(socket){
-	console.log('connected');
-	
-	socket.on('input', function(data){
+    socket.on('input', function(data){
 		console.log(data);
 	})
-	socket.on('disconnect', function(){})
+    
+    socket.on('disconnect', function(){})
 })
 
 console.log('The Application is launched on 6001');
