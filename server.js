@@ -4,9 +4,11 @@ var app      = express();
 var http = require('http').Server(app);
 // Socket IO set up
 var io = require('socket.io')(http);
+/*
+ * REMOVED NAMESPACES - may need to implement again
 var musicSocket = io.of('/play-music');
 var databaseSocket = io.of('/database');
-
+*/
 var fs = require('fs');
 var ss = require('socket.io-stream');
 
