@@ -12,7 +12,9 @@ var ss = require('socket.io-stream');
 
 exports = module.exports = function(io){
     io.on('connection', function(socket){
+      console.log("Music Socket Connection established");
         socket.on('stream', function(data){
+            console.log("Streaming data");
             var stream = ss.createStream();
             var filename = musicFolder + songList[data];
             ss(socket).emit('audio-stream', stream, {name: filename});

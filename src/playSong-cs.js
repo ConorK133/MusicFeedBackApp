@@ -21,7 +21,21 @@ function requestSong(audioId){
     })
 }
 // FUTURE - When there is more than one player, run through a loop and register them all and apply the event listener as below passing their respective ID's through the requestSong function.
-window.onload = function(){
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(function(){
+    console.log("Window loaded playSong-cs");
     var player = document.getElementById("audio");
     var input = document.getElementById("audioInput");
     if(player && input){
@@ -32,4 +46,4 @@ window.onload = function(){
             requestSong(audioId);
         })
     }
-}
+});
